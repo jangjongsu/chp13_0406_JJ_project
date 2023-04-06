@@ -11,7 +11,8 @@
 	<h2>회원가입</h2>
 	<hr>
 	<form action="insertDB.jsp" name="user_info" method="post" onsubmit="return checkJoin()">
-		아이디 : <input type="text" name="userID" size="16"><br><br>
+		아이디 : <input type="text" name="userID" size="16">
+		<input type="button" value="아이디중복체크" onclick="javascript:popup()"><br><br>
 		비밀번호 : <input type="password" name="userPW" size="16"><br><br>
 		이메일 : <input type="text" name="userMAIL" size="16"><br><br>
 		<hr>

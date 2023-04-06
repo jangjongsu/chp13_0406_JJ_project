@@ -19,3 +19,10 @@
 	 }
 	 return true;
  }
+ 
+ function popup(){
+	 var url = "idcheck.jsp";
+	 var name = "ID 가입여부 확인";
+	 var option = "width = 500, height=500, top=100, left=200, location=no";
+	 window.open(url, name, option);
+ }

@@ -5,10 +5,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>회원가입성공</title>
+<title>회원정보 수정 결과</title>
 </head>
 <body>
-	<%
+	<%	
 		String mid = request.getParameter("userID");
 		String mpw = request.getParameter("userPW");
 		String memail = request.getParameter("userMAIL");
@@ -17,7 +17,7 @@
     	String url = "jdbc:mysql://localhost:3306/jspdb";
      	String username = "root";
     	String password = "1234";
-     	String sql = "INSERT INTO members (id, pass, email) VALUES (?,?,?)";
+     	String sql = "UPDATE members SET pass=?, email=? where id=?";
       
       	Connection conn = null;
      	PreparedStatement pstmt = null;
@@ -27,17 +27,18 @@
 		conn = DriverManager.getConnection(url, username, password);
 			
 		pstmt = conn.prepareStatement(sql);
-		pstmt.setString(1, mid);
-		pstmt.setString(2, mpw);
-		pstmt.setString(3, memail);	
+		pstmt.setString(3, mid);
+		pstmt.setString(1, mpw);
+		pstmt.setString(2, memail);	
          
          int dbFlag=pstmt.executeUpdate();
          if (dbFlag == 1){
-        	 System.out.print("회원가입성공");
-        	 response.sendRedirect("signipSuccess.jsp");
+        	 System.out.print("회원정보수정성공");
+        	 out.print("회원정보수정성공");
+        
          }else{
-        	 System.out.print("회원가입실패");
-        	 response.sendRedirect("signup.jsp");
+        	 System.out.print("회원정보수정실패");
+        	 out.print("회원정보수정실패");
          }
          
          
@@ -59,6 +60,7 @@
       }
    
    %>
+ 
 
 </body>
 </html>
